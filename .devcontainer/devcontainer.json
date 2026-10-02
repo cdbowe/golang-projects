@@ -31,14 +31,11 @@
     "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
     "source=${localWorkspaceFolder}/.devcontainer,target=${containerWorkspaceFolder}/.devcontainer,type=bind,consistency=cached",
     "source=${localWorkspaceFolder}/claude_files,target=${containerWorkspaceFolder}/claude_files,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/main,target=${containerWorkspaceFolder}/main,type=bind,consistency=cached",
     "source=${localWorkspaceFolder}/LICENSE,target=${containerWorkspaceFolder}/LICENSE,type=bind,consistency=cached",
     "source=claude-code-home,target=/home/node/.claude,type=volume",
     "source=${localWorkspaceFolder}/../../Tools/AI/claude-code-tools,target=/opt/claude-code-tools,type=bind,readonly",
-    "source=${localWorkspaceFolder}/.claude,target=${containerWorkspaceFolder}/.claude,type=bind,consistency=cached",
-    "source=${localWorkspaceFolder}/main,target=${containerWorkspaceFolder}/main,type=bind,consistency=cached"
+    "source=${localWorkspaceFolder}/.claude,target=${containerWorkspaceFolder}/.claude,type=bind,consistency=cached"
   ],
-  "initializeCommand": "mkdir -p \"${localWorkspaceFolder}/claude_files\" && mkdir -p \"${localWorkspaceFolder}/main\"",
   "postCreateCommand": "sudo chmod +x .devcontainer/scripts/*.sh && bash .devcontainer/scripts/post-create.sh",
   "postStartCommand": "sudo chmod +x .devcontainer/scripts/*.sh && bash .devcontainer/scripts/post-start.sh"
 }
