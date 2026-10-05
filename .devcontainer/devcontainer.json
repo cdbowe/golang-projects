@@ -9,7 +9,9 @@
       "TZ": "America/New_York"
     }
   },
-  "features": {},
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:4.1.2": {}
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -28,7 +30,6 @@
   },
   "remoteUser": "node",
   "mounts": [
-    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
     "source=${localWorkspaceFolder}/.devcontainer,target=${containerWorkspaceFolder}/.devcontainer,type=bind,consistency=cached",
     "source=${localWorkspaceFolder}/claude_files,target=${containerWorkspaceFolder}/claude_files,type=bind,consistency=cached",
     "source=${localWorkspaceFolder}/LICENSE,target=${containerWorkspaceFolder}/LICENSE,type=bind,consistency=cached",
