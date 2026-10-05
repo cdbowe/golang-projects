@@ -1,0 +1,22 @@
+[
+  {
+    "id": "L-100",
+    "borrower_name": "Ana Ruiz",
+    "loan_amount": 250000,
+    "status": "open",
+    "documents": ["paystub", "w2"]
+  },
+  {
+    "id": "L-101",
+    "borrower_name": "Ben Ode",
+    "loan_amount": 480000.5,
+    "status": "closing"
+  },
+  {
+    "id": "L-102",
+    "borrower_name": "Cy Park",
+    "loan_amount": 95000,
+    "status": "open",
+    "documents": []
+  }
+]

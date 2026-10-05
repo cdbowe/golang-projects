@@ -1,0 +1,2 @@
+-- 002: add a status to every loan. See README.md for the rules.
+-- TODO: ALTER TABLE loans ...;

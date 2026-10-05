@@ -1,0 +1,16 @@
+# Postgres for `go run ./problems/15-postgres`. The tests don't use this:
+# they start their own throwaway container with Testcontainers.
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: loans
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app -d loans"]
+      interval: 2s
+      timeout: 2s
+      retries: 15

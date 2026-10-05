@@ -1,0 +1,2 @@
+-- 001: the loans table. See README.md for the columns and constraints.
+-- TODO: CREATE TABLE loans (...);
