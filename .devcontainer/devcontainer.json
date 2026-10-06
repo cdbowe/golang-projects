@@ -4,6 +4,7 @@
   "workspaceMount": "",
   "build": {
     "dockerfile": "Dockerfile",
+    "context": "..",
     "args": {
       "WORKSPACE_DIR": "/workspaces/golang-projects",
       "TZ": "America/New_York"

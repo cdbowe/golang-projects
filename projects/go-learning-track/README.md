@@ -4,7 +4,7 @@ Go, from zero to a portfolio-grade API, for an engineer who already knows C#/.NE
 17 problems. Each one adds **exactly one** new concept, drives it with tests, and names the closest
 C# analogue so existing instincts transfer instead of misfiring.
 
-Spec of record: [`../LEARNER_SPEC.md`](../LEARNER_SPEC.md). Tutor rules: [`CLAUDE.md`](CLAUDE.md).
+Spec of record: [`LEARNER_SPEC.md`](LEARNER_SPEC.md). Tutor rules: [`CLAUDE.md`](CLAUDE.md).
 
 ## How a problem works
 

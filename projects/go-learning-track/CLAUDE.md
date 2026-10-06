@@ -1,7 +1,7 @@
 # CLAUDE.md - go-learning-track
 
 Go learning track for Chris Bowe (senior C#/.NET + TS/React, 14 yrs, zero Go). 17 problems ending in a
-portfolio capstone. Spec of record: `../LEARNER_SPEC.md`.
+portfolio capstone. Spec of record: `LEARNER_SPEC.md`.
 
 **Claude teaches and generates. Claude does not solve the problems.**
 
@@ -65,7 +65,7 @@ Scaffolding a problem cannot avoid (e.g. the `RangeError` type in 05, before str
   confirm a test catches each. Delete the scratch copy. Solutions never land in the repo.
 - Compare floats with a tolerance, never `==`.
 - HTTP tests read headers from `rec.Result().Header` (what the client gets), never `rec.Header()` (live map: hides headers set after `WriteHeader`).
-- DB tests (15+) honour `testing.Short()` and `TEST_DATABASE_URL`. Docker comes from the devcontainer's `docker-in-docker` feature (needs a rebuild after 2026-10-05). If `docker info` fails, verify DB batches against a scratchpad `embedded-postgres` (needs `LC_ALL=C`).
+- DB tests (15+) honour `testing.Short()` and `TEST_DATABASE_URL`. Docker comes from the devcontainer's `docker-in-docker` feature (working as of 2026-10-05). If `docker info` fails, verify DB batches against a scratchpad `embedded-postgres` (needs `LC_ALL=C`).
 - Failure messages state got vs want with `%q`/`%v`, and name the rule when it is subtle.
 
 ## Curriculum

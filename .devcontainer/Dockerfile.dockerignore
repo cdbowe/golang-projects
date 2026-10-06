@@ -1,0 +1,5 @@
+# Build context is the workspace root (devcontainer.json "context": "..").
+# Send only what the Dockerfile needs: each project's go.mod and go.sum.
+*
+!projects/*/go.mod
+!projects/*/go.sum

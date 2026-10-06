@@ -76,6 +76,13 @@ ENV PATH="/usr/local/go/bin:/go/bin:${PATH}"
 # cannot own these yet.
 RUN mkdir -p /go/bin /go/pkg && chmod -R 1777 /go
 
+# C toolchain for cgo. Without a C compiler Go sets CGO_ENABLED=0, which
+# disables `go test -race`.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libc6-dev \
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 ######################
 # User Setup
 ######################
@@ -110,3 +117,32 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 USER ${USERNAME}
 RUN curl -fsSL https://claude.ai/install.sh | bash -s -- 2.1.285
+
+######################
+# Go tools
+######################
+
+# Installed as the non-root user so /go/bin and the module cache stay writable
+# for later `go install` / `go get` calls. Bump versions here, then rebuild.
+#   gopls: language server for the VS Code Go extension
+#   dlv:   debugger behind "debug test" in VS Code
+RUN go install golang.org/x/tools/gopls@v0.23.0 \
+  && go install github.com/go-delve/delve/cmd/dlv@v1.27.2 \
+  && go clean -cache
+
+######################
+# Go module dependencies
+######################
+
+# Pre-fills the module cache for every project under projects/ that has a
+# go.mod, so tests and builds work offline right after a rebuild. The build
+# context is the workspace root (see devcontainer.json), but
+# Dockerfile.dockerignore lets only projects/*/go.mod and go.sum through.
+# Adding or changing a dependency invalidates only this layer.
+COPY --chown=${USER_UID}:${USER_GID} projects/ /tmp/go-mods/
+RUN for mod in /tmp/go-mods/*/go.mod; do \
+      [ -f "$mod" ] || continue; \
+      echo "go mod download: ${mod%/go.mod}"; \
+      (cd "${mod%/go.mod}" && go mod download) || exit 1; \
+    done \
+  && rm -rf /tmp/go-mods
